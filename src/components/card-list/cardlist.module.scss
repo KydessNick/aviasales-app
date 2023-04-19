@@ -1,0 +1,25 @@
+@import '../../scss/variables.scss';
+
+.list {
+    // margin-bottom: 20px;
+    // display: grid;
+    // grid-template-columns: 500px;
+    // grid-auto-rows: 184px;
+    // gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.show-more-btn {
+    width: 500px;
+    // width: auto;
+    height: 50px;
+    border: none;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: $primary;
+    text-transform: uppercase;
+    color: $white;
+    font-weight: 600;
+    cursor: pointer;
+}
