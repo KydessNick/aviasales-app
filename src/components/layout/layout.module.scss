@@ -15,3 +15,9 @@
         gap: 20px;
     }
 }
+@media (max-width: 700px) {
+    .layout {
+        display: flex;
+        flex-direction: column;
+    }
+}
