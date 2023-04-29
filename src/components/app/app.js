@@ -1,117 +1,138 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 // import Card from '../card'
-import CardList from '../card-list'
+import CardList from '../card-list/card-list'
 import Filters from '../filters/filters'
 import Layout from '../layout/layout'
 import Header from '../header/header'
 import PriceTabs from '../price-tabs/price-tabs'
+import Loader from '../loader/loader'
+import ErrorAlert from '../errorAlert/errorAlert'
+import { fetchSearchID } from '../redux/slices/searchIdSlice'
+import { fetchTickets } from '../redux/slices/searchTicketsSlice'
+import { filterTickets, sortTickets } from '../redux/slices/filterTicketsSlice'
 
 import styles from './app.module.scss'
 
 function App() {
-    const tickets = [
-        {
-            price: 92650,
-            carrier: 'BT',
-            segments: [
-                {
-                    origin: 'MOW',
-                    destination: 'HKT',
-                    date: '2023-05-24T17:55:58.877Z',
-                    duration: 1086,
-                    stops: ['DEL', 'HKG'],
-                },
-                {
-                    origin: 'HKT',
-                    destination: 'MOW',
-                    date: '2024-02-27T08:37:08.952Z',
-                    duration: 727,
-                    stops: [],
-                },
-            ],
-        },
-        {
-            price: 92650,
-            carrier: 'BT',
-            segments: [
-                {
-                    origin: 'MOW',
-                    destination: 'HKT',
-                    date: '2023-05-24T17:55:58.877Z',
-                    duration: 1086,
-                    stops: ['DEL', 'HKG'],
-                },
-                {
-                    origin: 'HKT',
-                    destination: 'MOW',
-                    date: '2024-02-27T08:37:08.952Z',
-                    duration: 727,
-                    stops: [],
-                },
-            ],
-        },
-        {
-            price: 92650,
-            carrier: 'BT',
-            segments: [
-                {
-                    origin: 'MOW',
-                    destination: 'HKT',
-                    date: '2023-05-24T17:55:58.877Z',
-                    duration: 1086,
-                    stops: ['DEL', 'HKG'],
-                },
-                {
-                    origin: 'HKT',
-                    destination: 'MOW',
-                    date: '2024-02-27T08:37:08.952Z',
-                    duration: 727,
-                    stops: [],
-                },
-            ],
-        },
-        {
-            price: 92650,
-            carrier: 'BT',
-            segments: [
-                {
-                    origin: 'MOW',
-                    destination: 'HKT',
-                    date: '2023-05-24T17:55:58.877Z',
-                    duration: 1086,
-                    stops: ['DEL', 'HKG'],
-                },
-                {
-                    origin: 'HKT',
-                    destination: 'MOW',
-                    date: '2024-02-27T08:37:08.952Z',
-                    duration: 727,
-                    stops: [],
-                },
-            ],
-        },
-        {
-            price: 92650,
-            carrier: 'BT',
-            segments: [
-                {
-                    origin: 'MOW',
-                    destination: 'HKT',
-                    date: '2023-05-24T17:55:58.877Z',
-                    duration: 1086,
-                    stops: ['DEL', 'HKG'],
-                },
-                {
-                    origin: 'HKT',
-                    destination: 'MOW',
-                    date: '2024-02-27T08:37:08.952Z',
-                    duration: 727,
-                    stops: [],
-                },
-            ],
-        },
-    ]
+    // const tickets = [
+    //     {
+    //         price: 92650,
+    //         carrier: 'BT',
+    //         segments: [
+    //             {
+    //                 origin: 'MOW',
+    //                 destination: 'HKT',
+    //                 date: '2023-05-24T17:55:58.877Z',
+    //                 duration: 1086,
+    //                 stops: ['DEL', 'HKG'],
+    //             },
+    //             {
+    //                 origin: 'HKT',
+    //                 destination: 'MOW',
+    //                 date: '2024-02-27T08:37:08.952Z',
+    //                 duration: 727,
+    //                 stops: [],
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         price: 92650,
+    //         carrier: 'BT',
+    //         segments: [
+    //             {
+    //                 origin: 'MOW',
+    //                 destination: 'HKT',
+    //                 date: '2023-05-24T17:55:58.877Z',
+    //                 duration: 1086,
+    //                 stops: ['DEL', 'HKG'],
+    //             },
+    //             {
+    //                 origin: 'HKT',
+    //                 destination: 'MOW',
+    //                 date: '2024-02-27T08:37:08.952Z',
+    //                 duration: 727,
+    //                 stops: [],
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         price: 92650,
+    //         carrier: 'BT',
+    //         segments: [
+    //             {
+    //                 origin: 'MOW',
+    //                 destination: 'HKT',
+    //                 date: '2023-05-24T17:55:58.877Z',
+    //                 duration: 1086,
+    //                 stops: ['DEL', 'HKG'],
+    //             },
+    //             {
+    //                 origin: 'HKT',
+    //                 destination: 'MOW',
+    //                 date: '2024-02-27T08:37:08.952Z',
+    //                 duration: 727,
+    //                 stops: [],
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         price: 92650,
+    //         carrier: 'BT',
+    //         segments: [
+    //             {
+    //                 origin: 'MOW',
+    //                 destination: 'HKT',
+    //                 date: '2023-05-24T17:55:58.877Z',
+    //                 duration: 1086,
+    //                 stops: ['DEL', 'HKG'],
+    //             },
+    //             {
+    //                 origin: 'HKT',
+    //                 destination: 'MOW',
+    //                 date: '2024-02-27T08:37:08.952Z',
+    //                 duration: 727,
+    //                 stops: [],
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         price: 92650,
+    //         carrier: 'BT',
+    //         segments: [
+    //             {
+    //                 origin: 'MOW',
+    //                 destination: 'HKT',
+    //                 date: '2023-05-24T17:55:58.877Z',
+    //                 duration: 1086,
+    //                 stops: ['DEL', 'HKG'],
+    //             },
+    //             {
+    //                 origin: 'HKT',
+    //                 destination: 'MOW',
+    //                 date: '2024-02-27T08:37:08.952Z',
+    //                 duration: 727,
+    //                 stops: [],
+    //             },
+    //         ],
+    //     },
+    // ]
+
+    const dispatch = useDispatch()
+    const searchID = useSelector((state) => state.searchID)
+    const tickets = useSelector((state) => state.tickets)
+    // console.log(tickets)
+
+    useEffect(() => {
+        console.log(tickets)
+        if (!searchID.id) dispatch(fetchSearchID())
+        if (searchID.id && !tickets.stop && tickets.status !== 'loading' && tickets.status !== 'failed') {
+            dispatch(fetchTickets(searchID.id))
+                .then(() => dispatch(filterTickets()))
+                .then(() => dispatch(sortTickets()))
+        }
+    }, [dispatch, searchID.id, tickets])
 
     return (
         <div className={styles.app}>
@@ -119,7 +140,14 @@ function App() {
             <main>
                 <Layout aside={<Filters />}>
                     <PriceTabs />
-                    <CardList tickets={tickets} />
+                    {!tickets.stop && searchID.status !== 'error' && tickets.status !== 'failed' && <Loader />}
+                    {searchID.status === 'loading' && <Loader />}
+
+                    {(searchID.status === 'error' || tickets.status === 'failed') && (
+                        <ErrorAlert description="Ошибка при загрузке билетов, попробуйте позднее" />
+                    )}
+                    {/* <CardList tickets={tickets} /> */}
+                    <CardList />
                     {/* <button className={styles['show-more-btn']}> Показать еще 5 билетов</button> */}
                 </Layout>
             </main>

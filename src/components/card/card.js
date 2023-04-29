@@ -27,7 +27,8 @@ const displayEnd = (arr) => {
 }
 
 const Card = (props) => {
-    const { price, carrier, segments } = props.ticket
+    const { ticket } = props
+    const { price, carrier, segments } = ticket
 
     const items = segments.map((el, i) => {
         const date = new Date(el.date)
@@ -64,7 +65,7 @@ const Card = (props) => {
         <li className={styles.card}>
             <header className={styles.header}>
                 <h2 className={styles.title}>{price} Р</h2>
-                <img src={`https://pics.avs.io/99/36/${carrier}.png`}></img>
+                <img src={`https://pics.avs.io/99/36/${carrier}.png`} alt={`${ticket.carrier} logo`} />
             </header>
             {items}
         </li>
