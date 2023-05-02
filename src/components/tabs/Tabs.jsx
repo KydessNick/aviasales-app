@@ -1,11 +1,10 @@
 import React from 'react'
 
-import styles from './tabs.module.scss'
+import styles from './Tabs.module.scss'
 
 const Tabs = ({ tabs, selectedTab, onSelect }) => {
     const items = tabs.map((tab) => {
         const classNames = [styles.tabs__tab]
-        //временное применения стиля active
         if (tab.name === selectedTab) classNames.push(styles.active)
         return (
             <button className={classNames.join(' ')} type="button" key={tab.name} onClick={() => onSelect(tab.name)}>

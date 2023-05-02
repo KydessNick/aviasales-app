@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setTransfersFilter, setAllTransfers } from '../redux/slices/filtersSlice'
 import { filterTickets, sortTickets } from '../redux/slices/filterTicketsSlice'
 
-import styles from './filters.module.scss'
+import styles from './Filters.module.scss'
 
 const checkboxFilters = [
     { id: 'all', name: 'all-transfers', label: 'Все' },

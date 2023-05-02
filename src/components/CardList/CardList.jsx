@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import Card from '../card/card'
+import Card from '../Card/Card'
 
-import styles from './cardlist.module.scss'
+import styles from './CardList.module.scss'
 
 function CardList() {
     const filteredTickets = useSelector((state) => state.filteredTickets)

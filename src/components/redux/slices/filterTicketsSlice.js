@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-// import { CHEAP, FAST } from '../../constants'
-
 const hasAnyEquiv = (a1, a2) => {
     const set1 = new Set(a1)
     const set2 = new Set(a2)
@@ -58,7 +56,5 @@ export const filteredTicketsSlice = createSlice({
         [sortTickets.fulfilled]: (state, action) => action.payload,
     },
 })
-
-// export const { filterTicktes } = filtredTicketsSlice.actions
 
 export default filteredTicketsSlice.reducer

@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-// import { CHEAP } from '../../constants'
-
 export const priceFilterSlice = createSlice({
     name: 'priceFilter',
     initialState: 'CHEAP',
