@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setTransfersFilter, setAllTransfers } from '../redux/slices/filtersSlice'
-import { filterTickets, sortTickets } from '../redux/slices/filterTicketsSlice'
+import { setTransfersFilter, setAllTransfers } from '../../store/slices/filtersSlice'
+import { filterTickets, sortTickets } from '../../store/slices/filterTicketsSlice'
 
 import styles from './Filters.module.scss'
 

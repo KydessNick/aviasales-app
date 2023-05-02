@@ -8,9 +8,9 @@ import Header from '../Header/Header'
 import PriceTabs from '../price-tabs/PriceTabs'
 import Loader from '../Loader/Loader'
 import ErrorAlert from '../ErrorAlert/ErrorAlert'
-import { fetchSearchID } from '../redux/slices/searchIdSlice'
-import { fetchTickets } from '../redux/slices/searchTicketsSlice'
-import { filterTickets, sortTickets } from '../redux/slices/filterTicketsSlice'
+import { fetchSearchID } from '../../store/slices/searchIdSlice'
+import { fetchTickets } from '../../store/slices/searchTicketsSlice'
+import { filterTickets, sortTickets } from '../../store/slices/filterTicketsSlice'
 
 import styles from './App.module.scss'
 

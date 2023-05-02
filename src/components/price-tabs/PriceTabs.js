@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { sortTickets } from '../redux/slices/filterTicketsSlice'
-import { setPriceFilter } from '../redux/slices/priceFilterSlice'
+import { sortTickets } from '../../store/slices/filterTicketsSlice'
+import { setPriceFilter } from '../../store/slices/priceFilterSlice'
 import Tabs from '../Tabs/Tabs'
 
 const PriceTabs = () => {
