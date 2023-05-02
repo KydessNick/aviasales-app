@@ -1,4 +1,3 @@
-
 export default class AviasalesServise {
     constructor() {
         this.baseURL = 'https://aviasales-test-api.kata.academy/'
