@@ -5,7 +5,7 @@ import { sortTickets } from '../redux/slices/filterTicketsSlice'
 import { setPriceFilter } from '../redux/slices/priceFilterSlice'
 import Tabs from '../Tabs/tabs'
 
-function PriceTabs() {
+const PriceTabs = () => {
     const tabs = [
         { name: 'CHEAP', label: 'Самый дешевый' },
         { name: 'FAST', label: 'Самый быстрый' },

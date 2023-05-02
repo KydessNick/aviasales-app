@@ -18,14 +18,9 @@ const isAllTransfers = (obj) => {
 }
 
 const setAlltoValue = (obj, value) => {
-    console.log(Object.entries(obj))
-    console.log(value)
     const entries = Object.entries(obj).map((el) => {
-        // console.log(el)
         return [el[0], value]
     })
-    console.log(entries)
-    console.log(Object.fromEntries(entries))
     return Object.fromEntries(entries)
 }
 
@@ -48,7 +43,6 @@ const filterTransferSlice = createSlice({
             return state
         },
         setAllTransfers: (state, action) => {
-            console.log(action.payload)
             state = { ...action.payload, transfers: { ...setAlltoValue(state.transfers, action.payload.all) } }
             state.transfersCount = setTransfersCount(state.transfers)
             return state

@@ -14,13 +14,12 @@ import { filterTickets, sortTickets } from '../redux/slices/filterTicketsSlice'
 
 import styles from './App.module.scss'
 
-function App() {
+const App = () => {
     const dispatch = useDispatch()
     const searchID = useSelector((state) => state.searchID)
     const tickets = useSelector((state) => state.tickets)
 
     useEffect(() => {
-        console.log(tickets)
         if (!searchID.id) dispatch(fetchSearchID())
         if (searchID.id && !tickets.stop && tickets.status !== 'loading' && tickets.status !== 'failed') {
             dispatch(fetchTickets(searchID.id))

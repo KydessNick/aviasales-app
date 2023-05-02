@@ -5,7 +5,7 @@ import Card from '../Card/Card'
 
 import styles from './CardList.module.scss'
 
-function CardList() {
+const CardList = () => {
     const filteredTickets = useSelector((state) => state.filteredTickets)
 
     const [cardsOnPage, setCardOnPage] = useState(5)
@@ -16,13 +16,11 @@ function CardList() {
 
     const items = (tickets, count) => {
         const cardlist = []
-        console.log(count)
         if (!tickets) return cardlist
         for (let i = 0; i < count; i++) {
             const ticket = tickets[i]
             cardlist.push(<Card key={`${ticket.price}${ticket.carrier}${ticket.segments[0].date}`} ticket={ticket} />)
         }
-        console.log(cardlist)
         return cardlist
     }
 

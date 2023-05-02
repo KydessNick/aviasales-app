@@ -14,7 +14,7 @@ const checkboxFilters = [
     { id: 3, name: '3_transfers', label: '3 пересадки' },
 ]
 
-function Filters() {
+const Filters = () => {
     const filtersValue = useSelector((state) => state.transfersFilter)
     const dispatch = useDispatch()
 
@@ -24,7 +24,6 @@ function Filters() {
 
     const changeHandler = useCallback(
         (id, value) => {
-            console.log('c')
             dispatch(id === 'all' ? setAllTransfers({ [id]: !value }) : setTransfersFilter({ [id]: !value }))
         },
         [dispatch]
